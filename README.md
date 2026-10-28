@@ -42,6 +42,21 @@ Abra o `index.html` no navegador, ou rode um servidor simples na pasta:
 
 e acesse http://localhost:8000
 
+## Importante: versionar o CSS e o JS
+
+A Hostinger guarda `style.css` e `script.js` em cache por 7 dias. Se você alterar
+um deles sem trocar a versão na URL, quem já visitou o site continua recebendo o
+arquivo antigo — e vê a página quebrada.
+
+Sempre que mudar `css/style.css` ou `js/script.js`, atualize o número nas duas
+páginas (`index.html` e `esmaltacao-em-gel.html`):
+
+    <link rel="stylesheet" href="css/style.css?v=20261028">
+    <script src="js/script.js?v=20261028" defer></script>
+
+Use a data da alteração (AAAA-MM-DD sem traços). Imagens não precisam disso,
+porque cada foto nova tem nome próprio.
+
 ## Publicar (Hostinger)
 
 1. hPanel → **Sites** → `angelicanails.online` → **Gerenciador de arquivos**
