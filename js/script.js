@@ -3,22 +3,6 @@
    JavaScript do site (sem dependências)
    ========================================================================== */
 
-/* --------------------------------------------------------------------------
-   AVALIAÇÕES
-   Cadastre aqui somente avaliações REAIS de clientes (por exemplo, copiadas
-   do Google, com autorização). Enquanto a lista estiver vazia, o site mostra
-   apenas o convite para avaliar no Google.
-
-   Exemplo de formato:
-   {
-     nome: "Maria S.",
-     texto: "Texto da avaliação escrito pela cliente.",
-     nota: 5            // de 1 a 5 (opcional)
-   },
-   -------------------------------------------------------------------------- */
-const AVALIACOES = [
-];
-
 (function () {
   "use strict";
 
@@ -143,45 +127,6 @@ const AVALIACOES = [
       const section = document.getElementById(id);
       if (section) observer.observe(section);
     });
-  }
-
-  /* Avaliações ------------------------------------------------------------- */
-  const reviewsList = document.querySelector("[data-reviews]");
-  if (reviewsList && Array.isArray(AVALIACOES) && AVALIACOES.length) {
-    AVALIACOES.forEach(function (review) {
-      if (!review || !review.texto) return;
-
-      const item = document.createElement("li");
-      item.className = "review";
-
-      const nota = Math.max(0, Math.min(5, Math.round(Number(review.nota) || 0)));
-      if (nota) {
-        const stars = document.createElement("p");
-        stars.className = "review__stars";
-        stars.setAttribute("role", "img");
-        stars.setAttribute("aria-label", "Nota " + nota + " de 5");
-        stars.innerHTML = new Array(nota + 1).join(
-          '<svg class="icon" aria-hidden="true"><use href="#i-star-fill"></use></svg>'
-        );
-        item.appendChild(stars);
-      }
-
-      const quote = document.createElement("blockquote");
-      quote.className = "review__text";
-      quote.textContent = "“" + review.texto + "”";
-      item.appendChild(quote);
-
-      if (review.nome) {
-        const author = document.createElement("p");
-        author.className = "review__author";
-        author.textContent = review.nome;
-        item.appendChild(author);
-      }
-
-      reviewsList.appendChild(item);
-    });
-
-    if (reviewsList.children.length) reviewsList.hidden = false;
   }
 
   /* Galeria + lightbox ----------------------------------------------------- */
